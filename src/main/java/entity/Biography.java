@@ -17,8 +17,9 @@ public class Biography {
 
     public Biography() {}
 
-    public Biography(String details) {
+    public Biography(String details, Author author) {
         this.details = details;
+        this.author = author;
     }
 
     public Long getId() {

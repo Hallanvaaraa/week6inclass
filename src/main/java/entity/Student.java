@@ -14,13 +14,7 @@ public class Student {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(
-        name = "borrowedbook",
-        joinColumns = @JoinColumn(name = "student_id"),
-        inverseJoinColumns = @JoinColumn(name = "book_id")
-    )
-
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<Book> borrowedBooks = new HashSet<>();
 
 
@@ -44,5 +38,9 @@ public class Student {
 
     public Set<Book> getBooks() {
         return borrowedBooks;
+    }
+
+    public void addBook(Book book) {
+        borrowedBooks.add(book);
     }
 }

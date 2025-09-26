@@ -16,7 +16,7 @@ public abstract class Book {
 
     private String title;
 
-    @ManyToMany (mappedBy = "borrowedBooks")
+    @OneToMany (mappedBy = "book", cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<>();
 
 

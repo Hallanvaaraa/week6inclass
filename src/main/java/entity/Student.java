@@ -15,7 +15,7 @@ public class Student {
     private String name;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private Set<Book> borrowedBooks = new HashSet<>();
+    private Set<Borrowedbook> books = new HashSet<>();
 
 
     public Student() {}
@@ -36,11 +36,11 @@ public class Student {
         this.name = name;
     }
 
-    public Set<Book> getBooks() {
-        return borrowedBooks;
+    public Set<Borrowedbook> getBooks() {
+        return books;
     }
 
-    public void addBook(Book book) {
-        borrowedBooks.add(book);
+    public void addBook(Borrowedbook book) {
+        books.add(book);
     }
 }

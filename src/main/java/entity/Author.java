@@ -11,6 +11,9 @@ public class Author {
 
     private String name;
 
+    @OneToOne(mappedBy = "author", cascade = CascadeType.ALL)
+    private Biography biography;
+
     public Author() {}
 
     public Author(String name) {
@@ -27,5 +30,9 @@ public class Author {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Biography getBiography() {
+        return biography;
     }
 }

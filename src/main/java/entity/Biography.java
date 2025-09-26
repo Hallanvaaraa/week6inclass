@@ -11,8 +11,8 @@ public class Biography {
 
     private String details;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id")
+    @OneToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     private Author author;
 
     public Biography() {}
@@ -31,5 +31,9 @@ public class Biography {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public Author getAuthor() {
+        return author;
     }
 }

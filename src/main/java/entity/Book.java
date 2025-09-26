@@ -17,7 +17,7 @@ public abstract class Book {
     private String title;
 
     @OneToMany (mappedBy = "book", cascade = CascadeType.ALL)
-    private Set<Student> students = new HashSet<>();
+    private Set<Borrowedbook> students = new HashSet<>();
 
 
     public Book() {
@@ -39,7 +39,7 @@ public abstract class Book {
         this.title = title;
     }
 
-    public Set<Student> getStudents() {
+    public Set<Borrowedbook> getStudents() {
         return students;
     }
 }

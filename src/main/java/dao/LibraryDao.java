@@ -1,7 +1,6 @@
 package dao;
 
-import entity.Book;
-import entity.Student;
+import entity.*;
 import jakarta.persistence.*;
 
 public class LibraryDao {
@@ -132,6 +131,107 @@ public class LibraryDao {
                 tx.rollback();
             }
             e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    // CRUD operations for Borrowedbook
+    public void saveBorrowed(Borrowedbook bbook) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(bbook);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Borrowedbook findBorrowedById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Borrowedbook.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public void deleteBorrowed(Long id) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            Borrowedbook bbook = em.find(Borrowedbook.class, id);
+            if (bbook != null) {
+                em.remove(bbook);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    // CRUD for Authors
+    public void saveAuthor(Author author) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(author);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Author findAuthorById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Author.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    // CRUD for Biography
+    public void saveBio(Biography bio) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            em.persist(bio);
+            tx.commit();
+        } catch (Exception e) {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Biography findBioById(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Biography.class, id);
         } finally {
             em.close();
         }
